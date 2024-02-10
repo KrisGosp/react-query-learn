@@ -6,7 +6,7 @@ interface SetUser {
   type: "SET";
   userEmail: string;
 }
-type UserAction = ResetUser | SetUser;
+export type UserAction = ResetUser | SetUser;
 
 function loginReducer(user: string, action: UserAction) {
   switch (action.type) {
