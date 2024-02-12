@@ -5,16 +5,15 @@ import NavBar from "./state-management/NavBar";
 import TasksContext from "./state-management/contexts/tasksContext";
 import tasksReducer from "./state-management/reducers/tasksReducer";
 import LoginProvider from "./state-management/LoginProvider";
+import TasksProvider from "./state-management/TasksProvider";
 
 function App() {
-  const [tasks, dispatch] = useReducer(tasksReducer, []);
-
   return (
     <LoginProvider>
-      <TasksContext.Provider value={{ tasks, dispatch }}>
+      <TasksProvider>
         <NavBar />
         <HomePage />
-      </TasksContext.Provider>
+      </TasksProvider>
     </LoginProvider>
   );
 }
