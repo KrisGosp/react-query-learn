@@ -1,17 +1,14 @@
-import { useContext, useReducer, useState } from "react";
-import loginReducer from "./reducers/loginReducer";
-import UserContext from "./contexts/userContext";
-import useLogin from "./hooks/useLogin";
+import useUserStore from "./user/store";
 
 const LoginStatus = () => {
-  const { user, dispatchUser } = useLogin();
+  const { email, set, reset } = useUserStore();
 
-  if (user)
+  if (email)
     return (
       <>
         <div>
-          <span className="mx-2">{user}</span>
-          <a onClick={() => dispatchUser({ type: "RESET" })} href="#">
+          <span className="mx-2">{email}</span>
+          <a onClick={() => reset()} href="#">
             Logout
           </a>
         </div>
@@ -19,12 +16,7 @@ const LoginStatus = () => {
     );
   return (
     <div>
-      <a
-        onClick={() =>
-          dispatchUser({ type: "SET", userEmail: "kris060601@gmail.com" })
-        }
-        href="#"
-      >
+      <a onClick={() => set("kris060601@gmail.com")} href="#">
         Login
       </a>
     </div>
